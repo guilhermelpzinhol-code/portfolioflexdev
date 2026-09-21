@@ -9,10 +9,8 @@ Não há dependência em runtime: só HTML + 2 CSS estáticos + ~2 KB de JS.
 |----------------------------|-----------------------------------------------------------------------------|
 | `logo.png`                 | Logo oficial flex.dev (já instalado; 640×640, fundo transparente)           |
 | `asafe.jpg`, `gui.jpg`     | Fotos da equipe (já instaladas; 600×600, recortadas no rosto)                |
-| `mock-<case>-desktop.svg`  | Screenshot desktop do site do case (proporção 16:10)                        |
-| `mock-<case>-mobile.svg`   | Screenshot mobile do site do case (proporção 9:19)                          |
 
-Dica: exporte fotos/screenshots em **WebP** (fotos ≤ 400×400, desktop ≤ 1200 px de largura, mobile ≤ 390 px).
+| `*-desktop.png`, `*-mobile.jpg` | Prints dos cases (já instalados). Painéis desktop são completados para 16:10. |
 
 ## Ajustes rápidos em `index.html`
 

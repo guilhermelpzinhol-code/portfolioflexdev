@@ -153,8 +153,6 @@ section[class*="glow-"]::after  { bottom: 0; background: linear-gradient(to top,
 .star-off { color: #4B4860; }
 @media (min-width: 1024px) { .star-on { filter: drop-shadow(0 0 6px rgba(168,85,247,.85)); } }
 
-/* ---------- Badge de valor (desative com data-show-prices="false" no <body>) ---------- */
-body:not([data-show-prices="true"]) .price-badge { display: none; }
 
 /* ---------- Fallbacks para Chrome/WebView antigos ---------- */
 #inicio { min-height: 72vh; min-height: 72svh; }

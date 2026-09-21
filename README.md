@@ -16,7 +16,6 @@ Dica: exporte fotos/screenshots em **WebP** (fotos ≤ 400×400, desktop ≤ 120
 
 ## Ajustes rápidos em `index.html`
 
-- **Badges de valor dos cases**: `<body data-show-prices="true">` → mude para `"false"` no site público.
 - **WhatsApp**: troque `5500000000000` no link `wa.me` da seção Contato.
 - **E-mail**: troque `contato@flex.dev` no `mailto:`.
 

@@ -8,7 +8,7 @@ Não há dependência em runtime: só HTML + 2 CSS estáticos + ~2 KB de JS.
 | Arquivo atual              | Substituir por                                                              |
 |----------------------------|-----------------------------------------------------------------------------|
 | `logo.png`                 | Logo oficial flex.dev (já instalado; 640×640, fundo transparente)           |
-| `avatar-placeholder.svg`   | `asafe.jpg` e `gui.jpg` (ajuste os `src` em `index.html`, seção Equipe)     |
+| `asafe.jpg`, `gui.jpg`     | Fotos da equipe (já instaladas; 600×600, recortadas no rosto)                |
 | `mock-<case>-desktop.svg`  | Screenshot desktop do site do case (proporção 16:10)                        |
 | `mock-<case>-mobile.svg`   | Screenshot mobile do site do case (proporção 9:19)                          |
 

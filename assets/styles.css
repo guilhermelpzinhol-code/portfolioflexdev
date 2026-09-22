@@ -56,7 +56,6 @@ section[class*="glow-"]::before, section[class*="glow-"]::after {
 }
 section[class*="glow-"]::before { top: 0; background: linear-gradient(to bottom, #05040A 0%, rgba(5,4,10,.6) 45%, rgba(5,4,10,0) 100%); }
 section[class*="glow-"]::after  { bottom: 0; background: linear-gradient(to top, #05040A 0%, rgba(5,4,10,.6) 45%, rgba(5,4,10,0) 100%); }
-#inicio::before { display: none; }
 @media (min-width: 1024px) { section[class*="glow-"]::before, section[class*="glow-"]::after { height: 240px; } }
 
 /* ---------- Lens flare (só desktop; sem filter) ---------- */
@@ -120,7 +119,7 @@ section[class*="glow-"]::after  { bottom: 0; background: linear-gradient(to top,
   .reveal, #inicio .reveal { opacity: 1; transform: none; transition: none; }
   html { scroll-behavior: auto; }
   .btn-primary, .btn-ghost, .card-hover { transition: none; }
-  #inicio::after { animation: none; }
+  #inicio::before { animation: none; }
   #header { transition: none; }
 }
 
@@ -168,14 +167,18 @@ section[class*="glow-"]::after  { bottom: 0; background: linear-gradient(to top,
 /* ---------- Fallbacks para Chrome/WebView antigos ---------- */
 #inicio { min-height: 100vh; min-height: 100svh; }
 
-/* Brilho ambiente que respira lentamente por trás do conteúdo do hero */
-#inicio::after {
+/* Brilho ambiente que respira lentamente por trás do conteúdo do hero.
+   Usa ::before (não ::after, que já cuida da transição suave para a
+   próxima seção) e neutraliza a "height: 160px" herdada da regra
+   compartilhada acima, senão o brilho fica preso numa faixa no topo. */
+#inicio::before {
   content: ""; position: absolute; inset: 0; z-index: 0; pointer-events: none;
+  height: auto; display: block;
   background-image: radial-gradient(60% 55% at 100% 100%, rgba(212,0,0,.55) 0%, rgba(122,16,16,.25) 35%, rgba(5,4,10,0) 70%);
 }
 @media (prefers-reduced-motion: no-preference) {
   @keyframes hero-breathe { 0%, 100% { opacity: .55; } 50% { opacity: 1; } }
-  #inicio::after { animation: hero-breathe 7s ease-in-out infinite; }
+  #inicio::before { animation: hero-breathe 7s ease-in-out infinite; }
 }
 #mobile-menu { max-height: calc(100vh - 64px); max-height: calc(100svh - 64px); }
 

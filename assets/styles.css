@@ -101,7 +101,9 @@ section[class*="glow-"]::after  { bottom: 0; background: linear-gradient(to top,
 
 /* ---------- Animações de entrada (compositor only) ---------- */
 .reveal { opacity: 0; transform: translateY(20px); transition: opacity .6s cubic-bezier(.2,.65,.2,1), transform .6s cubic-bezier(.2,.65,.2,1); }
+#inicio .reveal { transform: translateY(30px) scale(.96); transition-duration: .8s; }
 .reveal.is-visible { opacity: 1; transform: none; }
+#inicio .reveal.is-visible { transform: none; }
 .reveal[data-delay="1"] { transition-delay: .1s; }
 .reveal[data-delay="2"] { transition-delay: .2s; }
 .reveal[data-delay="3"] { transition-delay: .3s; }
@@ -114,13 +116,21 @@ section[class*="glow-"]::after  { bottom: 0; background: linear-gradient(to top,
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .reveal { opacity: 1; transform: none; transition: none; }
+  .reveal, #inicio .reveal { opacity: 1; transform: none; transition: none; }
   html { scroll-behavior: auto; }
   .btn-primary, .btn-ghost, .card-hover { transition: none; }
+  #inicio::after { animation: none; }
+  #header { transition: none; }
 }
 
 /* ---------- Header ---------- */
-#header { transition: background-color .3s ease, border-color .3s ease; border-bottom: 1px solid transparent; }
+#header {
+  opacity: 0; transform: translateY(-14px); pointer-events: none;
+  transition: opacity .45s ease, transform .45s ease, background-color .3s ease, border-color .3s ease;
+  border-bottom: 1px solid transparent;
+}
+#header.is-past-hero { opacity: 1; transform: none; pointer-events: auto; }
+.no-js #header { opacity: 1; transform: none; pointer-events: auto; }
 #header.is-scrolled, #header.is-open { background: rgba(5,4,10,.94); border-bottom-color: rgba(255,255,255,.06); }
 #header .grid { padding-top: .25rem; padding-bottom: .25rem; }
 @media (min-width: 1024px) and (hover: hover) {
@@ -155,8 +165,17 @@ section[class*="glow-"]::after  { bottom: 0; background: linear-gradient(to top,
 
 
 /* ---------- Fallbacks para Chrome/WebView antigos ---------- */
-#inicio { min-height: 72vh; min-height: 72svh; }
-@media (min-width: 1024px) { #inicio { min-height: 88vh; min-height: 88svh; } }
+#inicio { min-height: 100vh; min-height: 100svh; }
+
+/* Brilho ambiente que respira lentamente por trás do conteúdo do hero */
+#inicio::after {
+  content: ""; position: absolute; inset: 0; z-index: 0; pointer-events: none;
+  background-image: radial-gradient(60% 55% at 100% 100%, rgba(212,0,0,.55) 0%, rgba(122,16,16,.25) 35%, rgba(5,4,10,0) 70%);
+}
+@media (prefers-reduced-motion: no-preference) {
+  @keyframes hero-breathe { 0%, 100% { opacity: .55; } 50% { opacity: 1; } }
+  #inicio::after { animation: hero-breathe 7s ease-in-out infinite; }
+}
 #mobile-menu { max-height: calc(100vh - 64px); max-height: calc(100svh - 64px); }
 
 /* ---------- Indicador "deslize para baixo" (hero) ---------- */

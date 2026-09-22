@@ -68,7 +68,7 @@
       </div>
 
       <!-- Indicador de rolagem -->
-      <a href="#sobre" aria-label="Deslize para baixo" class="scroll-hint absolute inset-x-0 bottom-6 z-10 mx-auto flex w-max flex-col items-center gap-2 text-muted sm:bottom-10">
+      <a href="#sobre" aria-label="Deslize para baixo" class="scroll-hint reveal absolute inset-x-0 bottom-6 z-10 mx-auto flex w-max flex-col items-center gap-2 text-muted sm:bottom-10" data-delay="2">
         <span class="text-[11px] font-medium uppercase tracking-[.22em]">Deslize</span>
         <svg class="scroll-hint-chevrons h-7 w-7" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
           <path class="scroll-hint-c1" d="M6 7l6 6 6-6"/>
@@ -283,6 +283,17 @@
       };
       onScroll();
       window.addEventListener('scroll', onScroll, { passive: true });
+
+      // Header só aparece depois que a hero sai de vista (entrada com hero pura)
+      const hero = document.getElementById('inicio');
+      if (hero && 'IntersectionObserver' in window) {
+        const heroIo = new IntersectionObserver((entries) => {
+          entries.forEach(e => header.classList.toggle('is-past-hero', !e.isIntersecting));
+        }, { threshold: 0 });
+        heroIo.observe(hero);
+      } else {
+        header.classList.add('is-past-hero');
+      }
 
       // Animações de entrada
       const items = document.querySelectorAll('.reveal');

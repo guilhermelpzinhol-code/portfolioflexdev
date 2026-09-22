@@ -28,12 +28,6 @@ img, svg { max-width: 100%; }
   -webkit-background-clip: text; background-clip: text; color: transparent;
 }
 
-/* Marca do case r4dar.digital (gradiente vermelho 90°) */
-.text-grad-r4dar {
-  background: linear-gradient(90deg, #f16060 0%, #d40000 100%);
-  -webkit-background-clip: text; background-clip: text; color: transparent;
-}
-
 /* ---------- Glassmorphism (sem blur no mobile) ---------- */
 .glass {
   background: linear-gradient(160deg, rgba(76,29,149,.34), rgba(27,14,62,.42));
@@ -54,7 +48,6 @@ img, svg { max-width: 100%; }
 .glow-tr { background-image: radial-gradient(50% 45% at 100% 0%, rgba(124,58,237,.4) 0%, rgba(5,4,10,0) 70%); }
 .glow-bl { background-image: radial-gradient(50% 45% at 0% 100%, rgba(76,29,149,.4) 0%, rgba(5,4,10,0) 70%); }
 .glow-c  { background-image: radial-gradient(45% 40% at 50% 50%, rgba(124,58,237,.28) 0%, rgba(5,4,10,0) 70%); }
-.glow-r4dar { background-image: radial-gradient(60% 55% at 100% 100%, rgba(212,0,0,.4) 0%, rgba(120,10,10,.2) 35%, rgba(5,4,10,0) 70%); }
 
 /* Transição suave entre seções: esmaece o brilho para o preto base nas bordas */
 section[class*="glow-"] { isolation: isolate; }
